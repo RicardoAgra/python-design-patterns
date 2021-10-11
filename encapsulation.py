@@ -1,7 +1,6 @@
 from abc import abstractmethod
 from dataclasses import dataclass
 
-
 class InformalUserInterface:
 	@abstractmethod
 	def say_hello(self) -> str:
