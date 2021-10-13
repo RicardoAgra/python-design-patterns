@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from ..concepts.inheritance import Box, Radiobox, Textbox
+from concepts.polymorphism import Box, Radiobox, Textbox
 
 @dataclass
 class Canvas:

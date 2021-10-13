@@ -3,7 +3,7 @@ from dataclasses import dataclass
 from enum import Enum
 from typing import Generic, TypeVar
 
-from ..concepts.polymorphism import Chef, Person, Programer
+from concepts.inheritance import Chef, Person, Programmer
 
 T = TypeVar("T")
 
@@ -63,7 +63,7 @@ if __name__ == '__main__':
 	person_memento.undo()
 	print("Stack after undo: " + person_memento.print_stack() + "\n")
 
-	person_memento.addAction(Programer("1", "", "Python"))
+	person_memento.addAction(Programmer("1", "", "Python"))
 	print("Stack after addAction: " + person_memento.print_stack() + "\n")
 
 	person_memento.addAction(Chef("2", ""))
@@ -78,10 +78,10 @@ if __name__ == '__main__':
 	person_memento.redo()
 	print("Stack after redo: " + person_memento.print_stack() + "\n")
 
-	person_memento.addAction(Programer("3", "", "JavaScript"))
+	person_memento.addAction(Programmer("3", "", "JavaScript"))
 	print("Stack after addAction: " + person_memento.print_stack() + "\n")
 
-	person_memento.addAction(Programer("4", "", "TypeScript"))
+	person_memento.addAction(Programmer("4", "", "TypeScript"))
 	print("Stack after addAction: " + person_memento.print_stack() + "\n")
 
 	person_memento.addAction(Chef("5", ""))

@@ -32,3 +32,7 @@ The memento desing pattern solves the need to go back in the state of an applica
 
 The state pattern is used when a Class Method's behavior changes based on a Class Property. In order to avoid using logical jumps that can even become nested several layers deep as the class complexity increases, the class property can be converted into a polymorphic class that either implements an interface or extends an abstract class.
 The main class can now delegate to the polymorphic property, that is now responsible for handling the event.
+
+## Extras
+
+This repo includes a Visual Studio Code Python snippets json.
