@@ -1,60 +1,55 @@
-from abc import abstractmethod
 from dataclasses import dataclass
 
 @dataclass
-class Box:
-	name: str
-	_enabled: bool = False
+class Person:
+	_name: str
+	dateOfBirth: str
 
-	@abstractmethod
-	def draw(self) -> None:
-		pass
-
-	def enable(self) -> None:
-		print(f"Enabling {self.name}")
-		self._enabled = True
-
-	def is_enabled(self) -> None:
-		print(f"{self.name} is " + str(("not ","")[self._enabled]) + "enabled" )
-
-
-@dataclass
-class Textbox(Box):
-	text: str = ""
-
-	def draw(self) -> None:
-		print("Drawing a Textbox")
-
-
-@dataclass
-class Radiobox(Box):
-	_checked: bool = False
-	
 	@property
-	def checked(self)->bool:
-		return self._checked
-	
-	@checked.setter
-	def name(self, new_checked: bool) -> None:
-		self._checked = new_checked
-	
-	def draw(self) -> None:
-		print("Drawing a Radiobox")
+	def name(self) -> str:
+		print(f"[Getting {self._name}'s name...]")
+		return self._name
+
+	@name.setter
+	def name(self, newName: str) -> None:
+		print(f"[Setting {self._name}'s name to {newName}...]")
+		self._name = newName
+
+@dataclass
+class Programmer(Person):
+	language: str = "Python"
+
+	def program(self) -> None:
+		print(f"I'm programming in {self.language}\n")
+
+@dataclass
+class Chef(Person):
+	def cook(self) -> None:
+		print("I'm cooking\n")
 
 
 if __name__ == "__main__":
-	print('Inheritance')
+	ricardo = Person("Ricardo", "06/09/1987")
 
-	textbox = Textbox("Textbox", text="Inheritance prevents code duplication")
+	print(ricardo.name, "\n")
 
-	print(textbox.text)
+	ricardo.name = "Ricardo Agra"
 
-	textbox.is_enabled()
-	textbox.enable()
-	textbox.is_enabled()
-	
-	radiobox = Radiobox("Radiobox")
-	radiobox.is_enabled()
-	radiobox.enable()
-	radiobox.is_enabled()
+	print(ricardo.name, "\n")	
 
+	"""Programmer inherits a Person's attributes and methods"""
+	Programmer = Programmer("Programmer", "06/09/1987")
+	Programmer.name = "Senior Programmer"
+	Programmer.program()
+
+	"""Chef inherits a Person's attributes and methods"""
+	chef = Chef("Gordon", "08/10/1966")
+	chef.name = "Gordon Ramsy"
+	chef.cook()
+
+	try:
+		chef.program()
+	except AttributeError:
+		print(AttributeError)
+		print("[Error: A chef doesn't program]")
+		

@@ -1,53 +1,53 @@
+from abc import abstractmethod
 from dataclasses import dataclass
+from multipledispatch import dispatch
 
 @dataclass
-class Person:
-	_name: str
-	dateOfBirth: str
+class Box:
+	name: str
 
-	@property
-	def name(self) -> str:
-		return self._name
+	@abstractmethod
+	def draw(self) -> None:
+		print(f"[Box] Drawing a {self.name}")
 
-	@name.setter
-	def name(self, newName: str) -> None:
-		print("Setting name")
-		self._name = newName
+	"""Method Overloading is Polymorphic (Compile-time Polymorphism)"""
+	@dispatch()
+	def capitalize_name(self) -> None:
+		self.name = self.name.capitalize()
+
+	@dispatch(int)
+	def capitalize_name(self, charNumber: int) -> None:
+		self.name = self.name[:charNumber].upper() + self.name[charNumber:]
+
+"""Inheritance allows Polymorphic assignments (Run-time Polymorphism)"""
+@dataclass
+class Textbox(Box):
+	def draw(self) -> None:
+		print(f"[Textbox] Drawing a {self.name}")
 
 @dataclass
-class Programer(Person):
-	language: str = "Python"
-
-	def program(self) -> None:
-		print(f"I'm programing in {self.language}")
+class Radiobox(Box):	
+	def draw(self) -> None:
+		print(f"[Radiobox] Drawing a {self.name}")
 
 @dataclass
-class Chef(Person):
-	def cook(self) -> None:
-		print("I'm cooking")
+class NotABox:
+	def erase(self) -> None:
+		print("Erasing drawings")
 
 
 if __name__ == "__main__":
-	person = Person("Ricardo", "06/09/87")
+	box: Box = Box('box in lowercase letters')
+	box.draw()
 
-	person.name = "Ricardo Agra"
-	person.dateOfBirth = "06/09/1987"
+	box.capitalize_name()
+	box.draw()
 
-	print(person.name, person.dateOfBirth)
+	box.capitalize_name(25)
+	box.draw()
 
-	"""Programer inherits a Person's functionality"""
-	programer = Programer("Ricardo", "06/09/1987")
-	programer.name = "Ricardo Agra"
-	programer.program()
+	box = Radiobox('Radiobox')
+	box.draw()
 
-	"""Chef inherits a Person's functionality"""
-	chef = Chef("Gordon", "08/10/1966")
-	chef.name = "Gordon Ramsy"
-	chef.cook()
-
-	try:
-		chef.program()
-	except Exception:
-		print(Exception)
-		print("A chef doesn't program")
-		
+	box = Textbox('Textbox')
+	box.draw()
