@@ -2,7 +2,8 @@ from collections import deque
 from dataclasses import dataclass
 from enum import Enum
 from typing import Generic, TypeVar
-from polymorphism import Chef, Person, Programer
+
+from ..concepts.polymorphism import Chef, Person, Programer
 
 T = TypeVar("T")
 

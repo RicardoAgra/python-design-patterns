@@ -1,7 +1,6 @@
-from dataclasses import dataclass, field
-from inheritance import Box, Radiobox, Textbox
-from typing import List
+from dataclasses import dataclass
 
+from ..concepts.inheritance import Box, Radiobox, Textbox
 
 @dataclass
 class Canvas:
