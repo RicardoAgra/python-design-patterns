@@ -1,0 +1,25 @@
+{
+	"If __main__ guard": {
+		"prefix": "py:if_main",
+		"body": "if __name__ == '__main__':"
+	},
+	"Declare dataclass": {
+		"prefix": "py:dataclass",
+		"body": ["@dataclass", "class $1:"]
+	},
+	"Declare dataclass private variable": {
+		"prefix": "py:private",
+		"body": [
+			"_$1: $2",
+			"",
+			"@property",
+			"def $1(self)->$2:",
+			"\treturn self._$1",
+			"",
+			"@$1.setter",
+			"def name(self, new_$1: $2) -> None:",
+			"\tself._$1 = new_$1",
+			""
+		]
+	}
+}
