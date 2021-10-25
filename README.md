@@ -2,6 +2,20 @@
 
 [Tuturial](https://www.youtube.com/watch?v=NU_1StN5Tkk)
 
+## Language Features
+
+Python has it's unique way to achieve common tasks. In this section we are going to explore how to write code the "Pythonic Way".
+
+### Comprehension
+
+Initialize or create a collection in a single line.
+
+### Multiple Assignment
+
+Multiple variables can be assigned or their values swaped in a single line.
+
+### Multiple Variable Assignments
+
 ## Concepts
 
 ### Abstraction
@@ -20,7 +34,11 @@ Encapsulation is the devision of a program into disctinct components which have 
 
 ### Inheritance
 
+By extending a more general class, classes implement properties and functionality without the need to re-write or duplicate code.
+
 ### Polymorphism
+
+By taking advantage of Inheritance, a Polymorphic variable can provide variable behavior and adjust to the state changes of the application, while avoiding multiple and sometimes nested conditional checks, reacting accordingly to each scenario.
 
 ## Design Patterns
 
